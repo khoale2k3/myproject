@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Sản Phẩm Mới</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-navbar {
+            background-color: #0080c7;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            width: 210px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 58px;
+            border-right: 1px solid #ddd;
+        }
+
+        .sidebar-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .sidebar-item.active {
+            background-color: #22b94e;
+            color: white;
+        }
+
+        .sidebar-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #eee;
+            color: #333;
+        }
+
+        .sidebar-item.active .sidebar-icon {
+            background-color: white;
+            color: #22b94e;
+        }
+        .main-content {
+            margin-left: 210px;
+            padding: 20px;
+        }
+        .dropdown-menu {
+            min-width: 200px;
+        }
+        .product-create-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .btn-primary {
+            background-color: #0080c7;
+            border-color: #0080c7;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .product-image-upload {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .product-image-upload:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <div class="top-navbar">
+        <div>
+            <!-- Empty for layout -->
+        </div>
+        <div class="d-flex align-items-center">
+            <span class="me-2">Cửa hàng</span>
+            <div class="dropdown d-inline-block">
+                <button class="btn btn-light dropdown-toggle" type="button" id="storeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Cửa hàng số 1
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="storeDropdown">
+                    <li><a class="dropdown-item" href="#">Cửa hàng số 1</a></li>
+                    <li><a class="dropdown-item" href="#">Cửa hàng số 2</a></li>
+                </ul>
+            </div>
+            <div class="dropdown d-inline-block ms-3">
+                <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Xin chào, admin
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Tài khoản</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Thoát</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="Home.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-home"></i></div>
+            Tổng quan
+        </a>
+        <a href="Orders.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-shopping-cart"></i></div>
+            Tạo đơn hàng
+        </a>
+        <a href="Product.html" class="sidebar-item active">
+            <div class="sidebar-icon"><i class="fas fa-box"></i></div>
+            Sản phẩm
+        </a>
+        <a href="customer.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-users"></i></div>
+            Khách hàng
+        </a>
+        <a href="Import.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-truck-loading"></i></div>
+            Nhập kho
+        </a>
+        <a href="Inventory.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-warehouse"></i></div>
+            Tồn kho
+        </a>
+        <a href="revenue.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-chart-line"></i></div>
+            Doanh số
+        </a>
+        <a href="profit.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-money-bill-wave"></i></div>
+            Lợi nhuận
+        </a>
+        <a href="setting.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-cog"></i></div>
+            Thiết lập
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="m-0">Tạo Sản Phẩm Mới</h4>
+                        <div>
+                            <a href="Product.html" class="btn btn-secondary me-2">
+                                <i class="fas fa-arrow-left me-2"></i>Quay lại
+                            </a>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Lưu Sản Phẩm
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-create-card">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="product-image-upload mb-3">
+                                <input type="file" id="productImage" class="d-none" accept="image/*">
+                                <label for="productImage" class="w-100">
+                                    <i class="fas fa-cloud-upload-alt fa-3x text-muted mb-3 d-block"></i>
+                                    <p class="text-muted">Tải lên hình ảnh sản phẩm</p>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="idSanPham" class="form-label">ID Sản Phẩm</label>
+                                    <input type="text" class="form-control" id="idSanPham" name="ID_SanPham" placeholder="Nhập ID sản phẩm">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="tenSanPham" class="form-label">Tên Sản Phẩm</label>
+                                    <input type="text" class="form-control" id="tenSanPham" name="TenSanPham" placeholder="Nhập tên sản phẩm">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="idNhaCungCap" class="form-label">Nhà Cung Cấp</label>
+                                    <select class="form-control" id="idNhaCungCap" name="ID_NhaCungCap">
+                                        <option value="">Chọn nhà cung cấp</option>
+                                        <option value="1">Xiaomi</option>
+                                        <option value="2">Dell</option>
+                                        <option value="3">Apple</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="idDanhMuc" class="form-label">Danh Mục</label>
+                                    <select class="form-control" id="idDanhMuc" name="ID_DanhMuc">
+                                        <option value="">Chọn danh mục</option>
+                                        <option value="1">Laptop</option>
+                                        <option value="2">Điện thoại</option>
+                                        <option value="3">Máy tính bảng</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="donViTinh" class="form-label">Đơn Vị Tính</label>
+                                    <input type="text" class="form-control" id="donViTinh" name="DonViTinh" placeholder="Nhập đơn vị tính">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="giaMua" class="form-label">Giá Mua</label>
+                                    <input type="number" class="form-control" id="giaMua" name="GiaMua" placeholder="Nhập giá mua">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="giaBan" class="form-label">Giá Bán</label>
+                                    <input type="number" class="form-control" id="giaBan" name="GiaBan" placeholder="Nhập giá bán">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ngayCungCap" class="form-label">Ngày Cung Cấp</label>
+                                    <input type="date" class="form-control" id="ngayCungCap" name="NgayCungCap">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="tinhTrang" class="form-label">Tình Trạng</label>
+                                    <select class="form-control" id="tinhTrang" name="TinhTrang">
+                                        <option value="">Chọn tình trạng</option>
+                                        <option value="1">Còn hàng</option>
+                                        <option value="2">Hết hàng</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ngaySX" class="form-label">Ngày Sản Xuất</label>
+                                    <input type="date" class="form-control" id="ngaySX" name="NgaySX">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ngayHH" class="form-label">Ngày Hết Hạn</label>
+                                    <input type="date" class="form-control" id="ngayHH" name="NgayHH">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="moTa" class="form-label">Mô Tả</label>
+                                    <textarea class="form-control" id="moTa" name="MoTa" rows="4" placeholder="Nhập mô tả sản phẩm"></textarea>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="ghiChu" class="form-label">Ghi Chú</label>
+                                    <textarea class="form-control" id="ghiChu" name="GhiChu" rows="3" placeholder="Nhập ghi chú (nếu có)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Simple image upload preview
+        document.getElementById('productImage').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const uploadLabel = document.querySelector('.product-image-upload label');
+                uploadLabel.innerHTML = `
+                    <img src="${e.target.result}" alt="Product Image" class="img-fluid rounded">
+                `;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

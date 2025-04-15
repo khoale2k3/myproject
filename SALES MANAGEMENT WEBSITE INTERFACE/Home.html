@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Bán Hàng - Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-navbar {
+            background-color: #0080c7;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            width: 210px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 58px;
+            border-right: 1px solid #ddd;
+        }
+
+        .sidebar-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .sidebar-item.active {
+            background-color: #22b94e;
+            color: white;
+        }
+
+        .sidebar-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #eee;
+            color: #333;
+        }
+
+        .sidebar-item.active .sidebar-icon {
+            background-color: white;
+            color: #22b94e;
+        }
+        .main-content {
+            margin-left: 210px;
+            padding: 20px;
+        }
+        .dropdown-menu {
+            min-width: 200px;
+        }
+        .card-green {
+        background-color: #7cb342;
+        color: white;
+        }
+
+        .card-blue {
+            background-color: #54a3d8;
+            color: white;
+            padding: 8px;
+        }
+
+        .card-red {
+            background-color: #d44950;
+            color: white;
+        }
+
+        .card-yellow {
+            background-color: #f0b840;
+            color: white;
+        }
+
+        .activity-card {
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            background-color: white;
+        }
+
+        .activity-card-header {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .activity-card-body {
+            padding: 15px;
+        }
+
+        .activity-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-blue {
+            background-color: #0080c7;
+            color: white;
+            border-radius: 2px;
+            padding: 3px;
+            margin-right: 5px;
+        }
+</style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <div class="top-navbar">
+        <div>
+            <!-- Empty for layout -->
+        </div>
+        <div class="d-flex align-items-center">
+            <span class="me-2">Cửa hàng</span>
+            <div class="dropdown d-inline-block">
+                <button class="btn btn-light dropdown-toggle" type="button" id="storeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Cửa hàng số 1
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="storeDropdown">
+                    <li><a class="dropdown-item" href="#">Cửa hàng số 1</a></li>
+                    <li><a class="dropdown-item" href="#">Cửa hàng số 2</a></li>
+                </ul>
+            </div>
+            <div class="dropdown d-inline-block ms-3">
+                <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Xin chào, admin
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Tài khoản</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Thoát</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="Home.html" class="sidebar-item active">
+            <div class="sidebar-icon"><i class="fas fa-home"></i></div>
+            Tổng quan
+        </a>
+        <a href="Orders.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-shopping-cart"></i></div>
+            Tạo đơn hàng
+        </a>
+        <a href="Product.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-box"></i></div>
+            Sản phẩm
+        </a>
+        <a href="customer.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-users"></i></div>
+            Khách hàng
+        </a>
+        <a href="Import.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-truck-loading"></i></div>
+            Nhập kho
+        </a>
+        <a href="Inventory.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-warehouse"></i></div>
+            Tồn kho
+        </a>
+        <a href="revenue.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-chart-line"></i></div>
+            Doanh số
+        </a>
+        <a href="profit.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-money-bill-wave"></i></div>
+            Lợi nhuận
+        </a>
+        <a href="setting.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-cog"></i></div>
+            Thiết lập
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Activity Today -->
+        <div class="d-flex align-items-center mb-3">
+            <div class="checkbox-blue me-2">
+                <i class="fas fa-check"></i>
+            </div>
+            <h5 class="mb-0">Hoạt động hôm nay</h5>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card card-green">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <i class="fas fa-credit-card fa-2x"></i>
+                            </div>
+                            <div>
+                                <h6>Tiền bán hàng</h6>
+                                <h4>0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-blue">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <i class="fas fa-shopping-cart fa-2x"></i>
+                            </div>
+                            <div>
+                                <div>Số đơn hàng: 0</div>
+                                <div>Số sản phẩm: 0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-red">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <i class="fas fa-undo fa-2x"></i>
+                            </div>
+                            <div>
+                                <h6>Hàng khách trả</h6>
+                                <h4>0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-yellow">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <i class="fas fa-globe fa-2x"></i>
+                            </div>
+                            <div>
+                                <h6>Đơn hàng web</h6>
+                                <h4>0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Cards -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="activity-card">
+                    <div class="activity-card-header">
+                        <i class="fas fa-play-circle me-2"></i> Hoạt động
+                    </div>
+                    <div class="activity-card-body">
+                        <div class="activity-item">
+                            <span>Tiền bán hàng</span>
+                            <span>0</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Số đơn hàng</span>
+                            <span>0</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Số sản phẩm</span>
+                            <span>0</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Khách hàng trả</span>
+                            <span>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="activity-card">
+                    <div class="activity-card-header">
+                        <i class="fas fa-info-circle me-2"></i> Thông tin kho
+                    </div>
+                    <div class="activity-card-body">
+                        <div class="activity-item">
+                            <span>Tồn kho</span>
+                            <span>6</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Hết Hàng</span>
+                            <span>0</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Sắp hết hàng</span>
+                            <span>0</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Vượt định mức</span>
+                            <span>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="activity-card">
+                    <div class="activity-card-header">
+                        <i class="fas fa-barcode me-2"></i> Thông tin sản phẩm
+                    </div>
+                    <div class="activity-card-body">
+                        <div class="activity-item">
+                            <span>Sản phẩm/Nhà sản xuất</span>
+                            <span>6 / 36</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Chưa làm giá bán</span>
+                            <span>0</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Chưa nhập giá mua</span>
+                            <span>0</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Hàng chưa phân loại</span>
+                            <span>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart and Info Cards -->
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="activity-card">
+                    <div class="activity-card-header">
+                        <i class="fas fa-chart-bar me-2"></i> Biểu đồ doanh số tuần
+                    </div>
+                    <div class="activity-card-body text-center">
+                        <p>Loading ...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="activity-card">
+                    <div class="activity-card-header">
+                        <i class="fas fa-globe me-2"></i> Thông tin từ web
+                    </div>
+                    <div class="activity-card-body text-center">
+                        <p>Loading ...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="activity-card">
+                    <div class="activity-card-header">
+                        <i class="fas fa-rss me-2"></i> Tin chuyên ngành
+                    </div>
+                    <div class="activity-card-body text-center">
+                        <p>Loading ...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

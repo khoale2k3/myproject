@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Bán Hàng Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Thêm Font Awesome -->
+    <style>
+        /* Cài đặt font và màu sắc nền */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1E90FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container chính cho form đăng nhập */
+        .login-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .login-container:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Tiêu đề trang */
+        .login-container h2 {
+            color: #1E90FF;
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* Các trường nhập liệu */
+        .login-container input {
+            width: 100%;
+            padding: 15px;
+            margin: 12px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+
+        .login-container input:focus {
+            border-color: #1E90FF;
+        }
+
+        /* Thêm icon vào các ô nhập liệu */
+        .input-container {
+            position: relative;
+        }
+
+        .input-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .input-container input {
+            padding-left: 40px; /* Tạo không gian cho icon */
+        }
+
+        /* Nút đăng nhập */
+        .login-container button {
+            width: 100%;
+            padding: 15px;
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-container button:hover {
+            background-color: #4682B4;
+        }
+
+        /* Các liên kết dưới footer */
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .footer-links a {
+            color: #1E90FF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #4682B4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Quản Lý Bán Hàng Online</h2>
+    <form action="#">
+        <div class="input-container">
+            <i class="fas fa-user"></i> <!-- Icon Email -->
+            <input type="text" id="email" placeholder="Email/Mã Đăng nhập" required>
+        </div>
+        <div class="input-container">
+            <i class="fas fa-lock"></i> <!-- Icon Mật khẩu -->
+            <input type="password" id="password" placeholder="Mật khẩu" required>
+        </div>
+        <button type="submit"><i class="fas fa-sign-in-alt"></i> Đăng nhập</button> <!-- Icon Nút đăng nhập -->
+    </form>
+    <div class="footer-links">
+        <a href="#">Quên mật khẩu</a>
+        <a href="#">Đăng kí</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Bán Hàng - Nhà cung cấp</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-navbar {
+            background-color: #0080c7;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            width: 210px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 58px;
+            border-right: 1px solid #ddd;
+        }
+
+        .sidebar-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .sidebar-item.active {
+            background-color: #22b94e;
+            color: white;
+        }
+
+        .sidebar-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #eee;
+            color: #333;
+        }
+
+        .sidebar-item.active .sidebar-icon {
+            background-color: white;
+            color: #22b94e;
+        }
+        .main-content {
+            margin-left: 210px;
+            padding: 20px;
+        }
+        .dropdown-menu {
+            min-width: 200px;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #0080c7;
+            border-color: #0080c7;
+        }
+
+        .btn-success {
+            background-color: #22b94e;
+            border-color: #22b94e;
+        }
+
+        .supplier-table {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .supplier-table th {
+            background-color: #f8f9fa;
+            padding: 12px;
+        }
+
+        .supplier-table td {
+            padding: 12px;
+            vertical-align: middle;
+        }
+
+        .supplier-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .action-buttons a {
+            margin-right: 5px;
+            color: #0080c7;
+        }
+
+        .action-buttons a:last-child {
+            color: #dc3545;
+        }
+
+        .pagination-info {
+            background-color: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .header-bar {
+            background-color: #f8f9fa;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tab-buttons {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab-button {
+            padding: 10px 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            cursor: pointer;
+            color: #0080c7;
+            text-decoration: none;
+        }
+
+        .tab-button.active {
+            background-color: #fff;
+            border-bottom: 1px solid #fff;
+            margin-bottom: -1px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <div class="top-navbar">
+        <div>
+            <!-- Empty for layout -->
+        </div>
+        <div class="d-flex align-items-center">
+            <span class="me-2">Cửa hàng</span>
+            <div class="dropdown d-inline-block">
+                <button class="btn btn-light dropdown-toggle" type="button" id="storeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Cửa hàng số 1
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="storeDropdown">
+                    <li><a class="dropdown-item" href="#">Cửa hàng số 1</a></li>
+                    <li><a class="dropdown-item" href="#">Cửa hàng số 2</a></li>
+                </ul>
+            </div>
+            <div class="dropdown d-inline-block ms-3">
+                <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Xin chào, admin
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Tài khoản</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Thoát</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="Home.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-home"></i></div>
+            Tổng quan
+        </a>
+        <a href="Orders.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-shopping-cart"></i></div>
+            Tạo đơn hàng
+        </a>
+        <a href="Product.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-box"></i></div>
+            Sản phẩm
+        </a>
+        <a href="customer.html" class="sidebar-item active">
+            <div class="sidebar-icon"><i class="fas fa-users"></i></div>
+            Khách hàng
+        </a>
+        <a href="Import.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-truck-loading"></i></div>
+            Nhập kho
+        </a>
+        <a href="Inventory.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-warehouse"></i></div>
+            Tồn kho
+        </a>
+        <a href="revenue.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-chart-line"></i></div>
+            Doanh số
+        </a>
+        <a href="profit.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-money-bill-wave"></i></div>
+            Lợi nhuận
+        </a>
+        <a href="setting.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-cog"></i></div>
+            Thiết lập
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header Bar -->
+        <div class="header-bar">
+            <h5 class="page-title m-0">Nhà cung cấp</h5>
+            <div>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Tạo nhà cung cấp
+                </button>
+                <button class="btn btn-success ms-2">
+                    <i class="fas fa-file-excel me-2"></i>Xuất Excel
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Buttons -->
+        <div class="tab-buttons">
+            <a href="Customer.html" class="tab-button">
+                <i class="fas fa-user me-1"></i> Khách hàng
+            </a>
+            <a href="#" class="tab-button active">
+                <i class="fas fa-building me-1"></i> Nhà cung cấp
+            </a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar row">
+            <div class="col-md-5">
+                <input type="text" class="form-control" placeholder="Nhập tên, mã hoặc SĐT Nhà cung cấp">
+            </div>
+            <div class="col-md-5">
+                <select class="form-select">
+                    <option selected>Tất cả</option>
+                    <option>Nhà cung cấp thân thiết</option>
+                    <option>Nhà cung cấp mới</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100">
+                    <i class="fas fa-search me-2"></i>Tìm kiếm
+                </button>
+            </div>
+        </div>
+
+        <!-- Suppliers Table -->
+        <div class="supplier-table">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>Mã NCC</th>
+                        <th>Tên NCC</th>
+                        <th>Điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Lần cuối nhập hàng</th>
+                        <th>Tổng tiền hàng</th>
+                        <th>Nợ</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NCC000007</td>
+                        <td>Iala</td>
+                        <td>4234234</td>
+                        <td>dsadsa</td>
+                        <td>-</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="action-buttons">
+                            <a href="SupplierDetail.html" title="Sửa"><i class="fas fa-edit"></i></a>
+                            <a href="#" title="Xóa"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NCC000006</td>
+                        <td>Công ty TNHH Young Jin Hi-tech Việt Nam</td>
+                        <td>0987654222</td>
+                        <td>Điền Thụy, Phú Bình, Thái Nguyên</td>
+                        <td>-</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="action-buttons">
+                            <a href="SupplierDetail.html" title="Sửa"><i class="fas fa-edit"></i></a>
+                            <a href="#" title="Xóa"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NCC000005</td>
+                        <td>Điện Từ Thái Nguyên</td>
+                        <td>0987654333</td>
+                        <td>Tân Thịnh, Thành phố Thái Nguyên, Thái Nguyên</td>
+                        <td>-</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="action-buttons">
+                            <a href="SupplierDetail.html" title="Sửa"><i class="fas fa-edit"></i></a>
+                            <a href="#" title="Xóa"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NCC000004</td>
+                        <td>Công ty Cổ phần Cơ điện từ ASO</td>
+                        <td>0208646569</td>
+                        <td>Thị xã Sông Công, Cải Đan, Sông Công, Thái Nguyên</td>
+                        <td>-</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="action-buttons">
+                            <a href="SupplierDetail.html" title="Sửa"><i class="fas fa-edit"></i></a>
+                            <a href="#" title="Xóa"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NCC000003</td>
+                        <td>Công Ty TNHH Mỹ Kim</td>
+                        <td>0208124567</td>
+                        <td>Hương Sơn, Thành phố Thái Nguyên, Thái Nguyên</td>
+                        <td>2019-06-14 23:32:00</td>
+                        <td>75,000,000</td>
+                        <td>0</td>
+                        <td class="action-buttons">
+                            <a href="SupplierDetail.html" title="Sửa"><i class="fas fa-edit"></i></a>
+                            <a href="#" title="Xóa"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NCC000002</td>
+                        <td>Công Ty Siêu Thị Hà Nội</td>
+                        <td>0208365789</td>
+                        <td>Phường Hoàng Văn Thụ, Thành phố Thái Nguyên, Thái Nguyên</td>
+                        <td>-</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="action-buttons">
+                            <a href="SupplierDetail.html" title="Sửa"><i class="fas fa-edit"></i></a>
+                            <a href="#" title="Xóa"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NCC000001</td>
+                        <td>ASUS</td>
+                        <td>0123456777</td>
+                        <td>Hoàn Kiếm, Hà Nội</td>
+                        <td>-</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="action-buttons">
+                            <a href="SupplierDetail.html" title="Sửa"><i class="fas fa-edit"></i></a>
+                            <a href="#" title="Xóa"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination-info d-flex justify-content-between align-items-center">
+                <span>Số nhà cung cấp: <span class="text-danger">7</span> | Tổng tiền hàng: <span class="text-danger">75,000,000 đ</span> | Tổng nợ: <span class="text-danger">0 đ</span></span>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="Supplier.js"></script>
+</body>
+</html>

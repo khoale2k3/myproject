@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Bán Hàng - Tạo Phiếu nhập</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .top-navbar {
+            background-color: #0080c7;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            width: 210px;
+            height: calc(100vh - 58px);
+            position: fixed;
+            left: 0;
+            top: 58px;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+        }
+
+        .sidebar-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .sidebar-item.active {
+            background-color: #22b94e;
+            color: white;
+        }
+
+        .sidebar-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #eee;
+            color: #333;
+        }
+
+        .sidebar-item.active .sidebar-icon {
+            background-color: white;
+            color: #22b94e;
+        }
+
+        .main-content {
+            margin-left: 210px;
+            height: calc(100vh - 58px);
+            display: flex;
+        }
+
+        .left-panel, .right-panel {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .left-panel {
+            width: 70%;
+            padding: 20px;
+            background-color: white;
+        }
+
+        .right-panel {
+            width: 30%;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-left: 1px solid #ddd;
+        }
+
+        .page-header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-search {
+            background-color: #e9f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #0080c7;
+            border-color: #0080c7;
+        }
+
+        .btn-success {
+            background-color: #22b94e;
+            border-color: #22b94e;
+        }
+
+        .form-control, .form-select {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <div class="top-navbar">
+        <div>
+            <!-- Empty for layout -->
+        </div>
+        <div class="d-flex align-items-center">
+            <span class="me-2">Cửa hàng</span>
+            <div class="dropdown d-inline-block">
+                <button class="btn btn-light dropdown-toggle" type="button" id="storeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Cửa hàng số 1
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="storeDropdown">
+                    <li><a class="dropdown-item" href="#">Cửa hàng số 1</a></li>
+                    <li><a class="dropdown-item" href="#">Cửa hàng số 5</a></li>
+                </ul>
+            </div>
+            <div class="dropdown d-inline-block ms-3">
+                <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Xin chào, admin
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Tài khoản</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Thoát</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="Home.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-home"></i></div>
+            Tổng quan
+        </a>
+        <a href="Orders.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-shopping-cart"></i></div>
+            Tạo đơn hàng
+        </a>
+        <a href="Product.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-box"></i></div>
+            Sản phẩm
+        </a>
+        <a href="customer.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-users"></i></div>
+            Khách hàng
+        </a>
+        <a href="Import.html" class="sidebar-item active">
+            <div class="sidebar-icon"><i class="fas fa-truck-loading"></i></div>
+            Nhập kho
+        </a>
+        <a href="Inventory.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-warehouse"></i></div>
+            Tồn kho
+        </a>
+        <a href="revenue.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-chart-line"></i></div>
+            Doanh số
+        </a>
+        <a href="profit.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-money-bill-wave"></i></div>
+            Lợi nhuận
+        </a>
+        <a href="setting.html" class="sidebar-item">
+            <div class="sidebar-icon"><i class="fas fa-cog"></i></div>
+            Thiết lập
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h5 class="m-0">Đơn hàng</h5>
+                <div>
+                    <button class="btn btn-primary me-2"><i class="fas fa-save me-1"></i> Lưu tạm</button>
+                    <button class="btn btn-success"><i class="fas fa-save me-1"></i> Lưu</button>
+                    <button class="btn btn-warning ms-2"><i class="fas fa-print me-1"></i> Lưu và in</button>
+                    <button class="btn btn-secondary ms-2"><i class="fas fa-arrow-left me-1"></i> Trở lại</button>
+                </div>
+            </div>
+
+            <!-- Product Search -->
+            <div class="product-search">
+                <input type="text" id="product-search-input" class="form-control" placeholder="Nhập mã sản phẩm hoặc tên sản phẩm">
+            </div>
+            <!-- Product Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th>STT</th>
+                    <th>Mã hàng</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá nhập</th>
+                    <th>Thành tiền</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody id="search-results">
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">
+                            Gõ mã hoặc tên sản phẩm 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="list-group" id="order-table-body">
+                <!-- Products will be dynamically added here as list items -->
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div class="mb-3">
+                <label class="form-label">Nhà cung cấp</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Tìm khách hàng">
+                    <button class="btn btn-primary"><i class="fas fa-plus"></i> </button>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ngày nhập</label>
+                <input type="date" class="form-control" value="2025-03-28">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Người nhập</label>
+                <select class="form-select">
+                    <option>Chọn NV bán hàng</option>
+                    <option selected>admin</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ghi chú</label>
+                <textarea class="form-control" rows="3" placeholder="Nhập ghi chú (nếu có)"></textarea>
+            </div>
+
+            <hr>
+
+            <div class="mb-3">
+                <label class="form-label">Hình thức</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="paymentMethod" checked>
+                        <label class="form-check-label">Tiền mặt</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="paymentMethod">
+                        <label class="form-check-label">Thẻ</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Modify the right panel inputs to add IDs -->
+            <div class="mb-3">
+                <label class="form-label">Tiền hàng</label>
+                <input type="text" id="tien-hang" class="form-control" value="0" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Chiết khấu</label>
+                <input type="text" id="chiet-khau" class="form-control" value="0">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tổng cộng</label>
+                <input type="text" id="tong-cong" class="form-control" value="0" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Thanh toán</label>
+                <input type="text" id="thanh-toan" class="form-control" value="0">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Còn nợ</label>
+                <input type="text" id="con-no" class="form-control" value="0" readonly>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="CreateImport.js"></script>
+</body>
+</html>
