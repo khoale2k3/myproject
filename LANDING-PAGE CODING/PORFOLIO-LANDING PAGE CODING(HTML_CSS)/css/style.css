@@ -1,0 +1,278 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0e0cc;
+}
+
+/* Header Section */
+.header {
+    background-color: #a38367;
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #f0e0cc;
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-link {
+    background-color: #f0e0cc;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #a38367;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Intro Section */
+.intro-section {
+    display: flex;
+    padding: 40px 10%;
+    align-items: center;
+    gap: 40px;
+    background-color: #a38367;
+}
+
+.intro-card {
+    background-color: white;
+    border-radius: 30px;
+    padding: 30px;
+    width: 50%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.intro-title {
+    color: #a38367;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.intro-text {
+    color: #666;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.intro-image {
+    width: 50%;
+    text-align: right;
+}
+
+/* Software Section */
+.software-section {
+    padding: 40px 10%;
+    background-color: #f0e0cc;
+}
+
+.section-title {
+    color: #a38367;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.software-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 45px;
+    margin-top: 30px;
+    justify-items: center;
+}
+
+.software-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.software-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.software-name {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+}
+
+/* Projects Section */
+.coffee-project {
+    padding: 40px 10%;
+    background-color: #f0e0cc;
+    display: flex;
+    gap: 30px;
+}
+
+.coffee-info {
+    width: 40%;
+    background-color: #a38367;
+    padding: 40px;
+    color: white;
+    border-radius: 5px;
+}
+
+.coffee-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.coffee-description {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.coffee-gallery {
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: 15px;
+}
+
+.coffee-image {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.coffee-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Mobile App Section */
+.app-section {
+    padding: 40px 10%;
+    display: flex;
+    gap: 30px;
+    background-color: #f0e0cc;
+}
+
+.app-info {
+    width: 50%;
+    background-color: white;
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.app-title {
+    color: #a38367;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.app-mockup {
+    width: 50%;
+    text-align: right;
+}
+
+.mockup-image {
+    max-width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+
+}
+
+/* Screens Section */
+.screens-section {
+    padding: 40px 10%;
+    background-color: #a38367;
+}
+
+.screens-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.screen {
+    width: 23%;
+    border-radius: 15px;
+    overflow: hidden;
+
+}
+
+/* Brand Section */
+.brand-section {
+    padding: 40px 10%;
+    background-color: #f0e0cc;
+}
+
+.brand-title {
+    color: #a38367;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.brand-description {
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.brand-images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.brand-image {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.brand-row {
+    display: flex;
+    gap: 20px;
+}
+
+.brand-small {
+    width: 48%;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #a38367;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 1px;
+}

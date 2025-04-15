@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: white;
+}
+        
+/* Header styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%; 
+    width: 90%; 
+    margin: 0 auto; 
+
+}
+.logo {
+    background-color: #fffbe6;
+    padding: 15px 30px;
+    border-radius: 30px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-item {
+    background-color: #fffbe6;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-item.active {
+    background-color: black;
+    color: white;
+}
+
+/* Hero section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding: 20px 5%; 
+    width: 90%; 
+    margin: 0 auto;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.hello-btn {
+    background-color: black;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.hero-text {
+    background-color: #fffbe6;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: right;
+}
+
+.hero-image img {
+    width: 80%;
+    max-width: 350px;
+    border-radius: 30px;
+}
+
+/* Software section */
+.software-section {
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin: 50px 0;
+}
+
+.software-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.software-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.software-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+}
+
+/* Projects section */
+.projects-section {
+    padding: 30px 0;
+    margin-bottom: 50px;
+    
+}
+
+.projects-section h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.projects-grid {
+    display: flex;
+    gap: 30px;
+    padding: 20px 5%; 
+    width: 90%; 
+    margin: 0 auto;
+}
+
+.projects-left {
+    flex: 1;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.project-item {
+    width: 100%;
+}
+
+.project-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.project-item.large {
+    grid-column: span 2;
+}
+
+.projects-right {
+    flex: 1;
+    padding: 20px;
+    text-align: center; /* Center the content */
+}
+
+.project-title {
+    background-color: black;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.project-description {
+    background-color: #fffbe6;
+    padding: 20px;
+    border-radius: 20px;
+    line-height: 1.6;
+    text-align: left; /* Keep the description text left-aligned */
+}
+
+/* Gongcha section */
+.gongcha-section {
+    margin-bottom: 50px;
+    padding: 20px 5%; 
+    width: 90%; 
+    margin: 0 auto;
+}
+
+.gongcha-title {
+    background-color: black;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.gongcha-description {
+    background-color: #fffbe6;
+    padding: 20px;
+    border-radius: 20px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.gongcha-images {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.gongcha-images img {
+    width: 18%;
+    border-radius: 10px;
+}
+
+/* Footer */
+.footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    background-color: #fffbe6;
+    color: black;
+    padding: 15px 30px;
+    border-radius: 30px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
